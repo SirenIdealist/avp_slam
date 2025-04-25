@@ -102,13 +102,16 @@ void Publish(const double &time, const double &x, const double &y, const double 
 }
 
 void GeneratePose(const double &time, double &x, double &y, double &yaw) {
-    // Your code here
-    // Modify the function of x, y, and yaw, so that the vehicle can drive the shape you want.
-    x = 10 * sin(time / 10 * M_PI);
-    y = 10 * cos(time / 10 * M_PI) - 10;
-    double vx = (1.0 / 10 * M_PI) * 10 * cos(time / 10 * M_PI);
-    double vy = (1.0 / 10 * M_PI) * 10 * (-1) * sin(time / 10 * M_PI);
-    yaw = atan2(vy , vx);
+    double radius = 10.0;      // 圆的半径
+    double frequency = 0.1;    // 控制运动速度
+
+    x = radius * sin(time * frequency * M_PI);
+    y = radius * cos(time * frequency * M_PI) - radius; // 调整y值使圆心在(0, -radius)
+
+    // 计算偏航角（速度方向）
+    double vx = radius * frequency * M_PI * cos(time * frequency * M_PI);
+    double vy = -radius * frequency * M_PI * sin(time * frequency * M_PI);
+    yaw = atan2(vy, vx);
 }
 
 int main(int argc, char **argv) {
