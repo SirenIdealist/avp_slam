@@ -102,16 +102,14 @@ void Publish(const double &time, const double &x, const double &y, const double 
 }
 
 void GeneratePose(const double &time, double &x, double &y, double &yaw) {
-    double amplitude = 5.0;     // 正弦波振幅
-    double frequency = 0.1;     // 控制运动速度
+    double slope = 0.5;         // 直线斜率
+    double speed = 0.5;         // 控制运动速度
 
-    x = time * frequency * M_PI;
-    y = amplitude * sin(x);
+    x = time * speed;
+    y = slope * x;
 
-    // 计算偏航角（速度方向）
-    double vx = frequency * M_PI;
-    double vy = amplitude * frequency * M_PI * cos(x);
-    yaw = atan2(vy, vx);
+    // 偏航角固定为直线的倾斜角
+    yaw = atan(slope);
 }
 
 int main(int argc, char **argv) {
