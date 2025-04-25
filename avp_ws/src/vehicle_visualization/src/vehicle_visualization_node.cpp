@@ -137,6 +137,7 @@ void Publish(const double &time, const double &x, const double &y, const double 
     meshROS.pose.position.x = t_mesh(0);  // x坐标
     meshROS.pose.position.y = t_mesh(1);  // y坐标
     meshROS.pose.position.z = t_mesh(2);  // z坐标
+<<<<<<< HEAD
 
     // 设置模型缩放比例
     meshROS.scale.x = 1.0;  // x轴缩放
@@ -156,6 +157,27 @@ void Publish(const double &time, const double &x, const double &y, const double 
 }
 
 
+=======
+
+    // 设置模型缩放比例
+    meshROS.scale.x = 1.0;  // x轴缩放
+    meshROS.scale.y = 1.0;  // y轴缩放
+    meshROS.scale.z = 1.0;  // z轴缩放
+    
+    // 设置模型颜色和透明度
+    meshROS.color.a = 1.0;  // 不透明度(1.0为完全不透明)
+    meshROS.color.r = 1.0;  // 红色分量(1.0为最大值)
+    meshROS.color.g = 0.0;  // 绿色分量
+    meshROS.color.b = 0.0;  // 蓝色分量
+
+    // 设置模型资源路径(使用ROS package路径格式)
+    std::string mesh_resource = "package://vehicle_visualization/meshes/car.dae"; // 3D mesh模型，模型需要是COLLADA格式(.dae文件)
+    meshROS.mesh_resource = mesh_resource; // 指定模型文件路径
+    meshPub.publish(meshROS); // 发布3D模型消息
+}
+
+
+>>>>>>> b05552691bb1bce6bd7ecfa5ca64d39931493c54
 // 生成车辆位姿的函数
 // 参数：当前时间(输入)，x、y、yaw(输出)
 /*
@@ -217,4 +239,8 @@ int main(int argc, char **argv) {
     // ROS事件循环(实际上前面的while循环不会退出，这里不会执行)
     ros::spin();
     return 0;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b05552691bb1bce6bd7ecfa5ca64d39931493c54
