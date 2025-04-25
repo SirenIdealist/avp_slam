@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/avp_slam/avp_ws/devel
+
+Name: vehicle_visualization
+Description: Description of vehicle_visualization
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
